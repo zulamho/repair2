@@ -27,14 +27,18 @@ function SignUpPage() {
   //const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [workingUser, setWorkingUser] = useState("");
+  const [workingUser, setWorkingUser] = useState("Рабочий");
   const [email, setEmail] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
+  
+  console.log(workingUser)
 
   const signingUp = useSelector((state) => state.application.signingUp);
   const error = useSelector((state) => state.application.error);
+  const avatar = useSelector((state)=> state.application.avatar)
+  console.log(avatar.image)
 
   // const handleChangeImage = (e) => {
   //   setImage(e.target.value);
@@ -47,7 +51,7 @@ function SignUpPage() {
     setLastName(e.target.value);
   };
   const handleChangeWorkingUser = (e) => {
-    setWorkingUser(e.target.value);
+    setWorkingUser(e.target.value );
   };
 
   const handleChangeEmail = (e) => {
@@ -102,19 +106,20 @@ function SignUpPage() {
             Регистрация
           </Typography>
 
+       
+          <Stack direction="row" spacing={2} sx={{ width: 80, height: 80 }}>
+            <Avatar
+              sx={{ width: 80, height: 80 }}
+              
+              src={`http://localhost:4000/${avatar.image}`}
+            />
+          </Stack>
           <input
             accept="image/*"
             id="contained-button-file"
             type="file"
             onChange={handleAddAvatar}
           />
-          <Stack direction="row" spacing={2} sx={{ width: 80, height: 80 }}>
-            <Avatar
-              sx={{ width: 80, height: 80 }}
-              alt="Remy Sharp"
-              src="https://ukranews.com/upload/news/2020/07/28/5f208e749f631-----------_1200.jpg"
-            />
-          </Stack>
 
           <Box
             component="form"
@@ -161,11 +166,13 @@ function SignUpPage() {
                       value="Пользователь"
                       control={<Radio />}
                       label="Пользователь"
+                      
                     />
                     <FormControlLabel
-                      value="Рабочий"
+                      value={workingUser }
                       control={<Radio />}
                       label="Рабочий"
+                      onChange={handleChangeWorkingUser}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -208,12 +215,12 @@ function SignUpPage() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
                   label="I want to receive inspiration, marketing promotions and updates via email."
-                />
+                /> */}
               </Grid>
             </Grid>
             <Button

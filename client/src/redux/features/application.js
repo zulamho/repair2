@@ -4,6 +4,7 @@ const initialState = {
   error: null,
   token: localStorage.getItem("token"),
   users: [],
+  avatar: []
 };
 
 export default function application(state = initialState, action) {
