@@ -4,6 +4,7 @@ import SigninPage from "./pages/SigninPage/SigninPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import Home from "../components/pages/HomePage/index";
 import Services from "../components/pages/ProfilePage/services";
+import ProfilePages from "./pages/ProfilePage/ProfilePage"
 
 function App() {
   return (
@@ -18,8 +19,11 @@ function App() {
         <Route path="/service">
           <Services />
         </Route>
-        <Route path="/">
+        <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/ProfilePages" exact>
+          <ProfilePages />
         </Route>
       </Switch>
     </BrowserRouter>
