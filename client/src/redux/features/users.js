@@ -63,7 +63,7 @@ const initialState = {
     return async (dispatch) => {
       dispatch({ type: "users/load/pending" });
   
-      const res = await fetch("/users");
+      const res = await fetch("http://localhost:4000/users");
       const json = await res.json();
   
       dispatch({ type: "users/load/fulfilled", payload: json });
@@ -74,7 +74,7 @@ const initialState = {
     return async (dispatch, getState) => {
       dispatch({ type: "usersById/load/pending" });
       const state = getState();
-      const res = await fetch(`http://localhost:4000/user/`, {
+      const res = await fetch(`http://localhost:4000/user/614f55a739d08ed009f63a32`, {
         headers: {
           Authorization: `Bearer ${state.application.token}`,
         },

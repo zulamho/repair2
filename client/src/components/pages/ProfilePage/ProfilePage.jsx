@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 function ProfilePages() {
   const dispatch = useDispatch();
   // const user = useSelector((state) => user.application.users);
-  const token = useSelector((state) => state.application.currentUser)
-  console.log(token);
+  const user = useSelector((state) => state.users.currentUser)
+  console.log(user);
 
   return (
     <div>
-      {token}
+      {user}
     </div>
   )
 }
